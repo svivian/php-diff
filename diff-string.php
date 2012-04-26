@@ -1,11 +1,11 @@
 <?php
 
-// Usage: $html = string_diff::compare( $original, $new )
+// Usage: $html = diff_string::compare( $original, $new )
 
 class diff_string
 {
 	// ($o,$n) are strings
-	function compare( $o, $n )
+	public function compare( $o, $n )
 	{
 		$str = '';
 		$o = trim($o);
@@ -54,7 +54,7 @@ class diff_string
 	}
 
 	// ($o,$n) are arrays of words
-	function diff( $o, $n )
+	private function diff( $o, $n )
 	{
 		$ns = array();
 		$os = array();
@@ -98,7 +98,7 @@ class diff_string
 		for ( $i = count($n)-1; $i > 0; $i-- )
 		{
 			$word = $n[$i];
-			if ( is_array( $word ) && !is_array( $n[$i+1] ) && $word['row'] > 0 &&
+			if ( is_array( $word ) && !is_array( $n[$i-1] ) && $word['row'] > 0 &&
 				!is_array( $o[ $word['row']-1 ] ) && $n[$i-1] == $o[ $word['row']-1 ] )
 			{
 				$n[$i-1] = array( 'text' => $n[$i-1], 'row' => $word['row']-1 );
