@@ -18,10 +18,10 @@ class diff_string
 		// arrays to preserve whitespace
 		preg_match_all( '/\s+/', $o, $matches );
 		$oWS = $matches[0];
-		$oWS[] = ' ';
+		$oWS[] = '';
 		preg_match_all( '/\s+/', $n, $matches );
 		$nWS = $matches[0];
-		$nWS[] = ' ';
+		$nWS[] = '';
 
 		if ( count($nOut) == 0 )
 		{
